@@ -228,6 +228,12 @@ bool GdbDriver::startup(QString cmdStr)
 	return false;
 
     static const char gdbInitialize[] =
+    "skip -gfile include/bits/*.h\n"
+    "skip -function \"operator new\"\n"
+    "skip -gfi /usr/include/c++/*/*/*\n"
+    "skip -gfi /usr/include/c++/*/*\n"
+    "skip -gfi /usr/include/c++/*\n"
+    "skip -gfi /usr/include/c++/*/bits/*\n"
 	/*
 	 * Work around buggy gdbs that do command line editing even if they
 	 * are not on a tty. The readline library echos every command back
